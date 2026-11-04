@@ -1086,13 +1086,13 @@ select, input[type="email"], input[type="text"] {
      Exam (mock + free trial)
      ========================================================= */
   var timerHandle = null;
-  function startExam(kind) {
+  function startExam(kind, auto) {
     stopSpeech();
     var ids = kind === 'trial' ? assembleTrial(GENERAL) : assembleExam(GENERAL, stateQuestions());
     if (!ids.length) { state.msg = { kind: 'bad', text: 'Soru verisi yüklenemedi.' }; render(); return; }
-    state.exam = { kind: kind, ids: ids, answers: {}, marked: {}, idx: 0, start: Date.now(), done: false, result: null, stateCode: state.stateCode };
+    state.exam = { kind: kind, ids: ids, answers: {}, marked: {}, idx: 0, start: Date.now(), done: false, result: null, stateCode: state.stateCode, auto: !!auto };
     saveExam();
-    if (kind === 'trial') track('trial_start', {}); // full-exam starts are not tracked (not in the event whitelist)
+    if (kind === 'trial' && !auto) track('trial_start', {}); // full-exam starts are not tracked (not in the event whitelist)
     state.onboarded = true; lsSet('onboarded', true);
     go('deneme');
   }
@@ -1476,6 +1476,8 @@ select, input[type="email"], input[type="text"] {
     var ex = state.exam;
     if (state.view === 'deneme' && ex && !ex.done) {
       var qid = ex.ids[ex.idx];
+      // Auto-started trials count as started only once the visitor answers a question
+      if (ex.kind === 'trial' && ex.auto && !ex.counted) { ex.counted = true; track('trial_start', { auto: 1 }); }
       ex.answers[qid] = i; saveExam(); render(); return;
     }
     if (state.view === 'yanlislarim' && state.retry.id) {
@@ -1609,6 +1611,14 @@ select, input[type="email"], input[type="text"] {
      Boot
      ========================================================= */
   function boot() {
+    // Campaign links (?k=fbB, ?k=tt ...) promise "free 30-question trial": land first-time visitors
+    // straight on the first trial question instead of the landing page.
+    var campaign = cleanSource(PARAMS.k || PARAMS.utm_source);
+    if (campaign && !window.location.hash && !state.onboarded && !(state.exam && !state.exam.done)) {
+      track('visit', { vid: VID, path: 'deneme', direct_trial: 1 });
+      startExam('trial', true);
+      return;
+    }
     state.view = routeFromHash();
     if (!window.location.hash && state.view) { try { history.replaceState(null, '', '#' + state.view); } catch (e) { /* ignore */ } }
     render();
