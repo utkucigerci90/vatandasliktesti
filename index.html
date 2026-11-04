@@ -548,6 +548,8 @@ select, input[type="email"], input[type="text"] {
   if (['demo', 'preorder', 'live'].indexOf(CFG.mode) < 0) CFG.mode = 'demo';
   CFG.freeLimit = Math.max(1, parseInt(CFG.freeLimit, 10) || 30);
   CFG.apiBase = String(CFG.apiBase || '').replace(/\/+$/, '');
+  // Outside demo mode an empty apiBase means "same origin" (the site's own /api/*).
+  if (!CFG.apiBase && CFG.mode !== 'demo' && /^https?:$/.test(location.protocol)) CFG.apiBase = location.origin;
 
   var rawData = readJSON('einb-data', []);
   var DATA = Array.isArray(rawData) ? rawData.filter(isValidQuestion) : [];
