@@ -10,8 +10,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vatandasliktesti.com/">
 <meta property="og:locale" content="tr_TR">
-<meta name="theme-color" content="#F3F5F4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1417" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBF6EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130F" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Vatandaşlık Testi">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="canonical" href="https://vatandasliktesti.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -483,6 +490,8 @@ select, input[type="email"], input[type="text"] {
 .price-amount, .score-big, .stat b, .timer { font-weight: 800; }
 .inside li::before { border-radius: 999px; border-color: var(--cta); background: var(--warm-soft); }
 .note-official { opacity: .9; }
+.install { display: flex; align-items: center; justify-content: space-between; gap: .9rem; flex-wrap: wrap; background: var(--accent-soft); border-color: transparent; }
+.install .btn { flex: none; }
 /* Quick quiz */
 .welcome { background: var(--warm-soft); color: var(--warm-ink); border-radius: var(--r-card); padding: 1rem 1.1rem; }
 .welcome h2 { font-size: 1.3rem; margin-bottom: .35rem; color: var(--fg); }
@@ -1300,6 +1309,19 @@ select, input[type="email"], input[type="text"] {
      Quick quiz: 5 questions, answer + Turkish explanation shown
      immediately. The first thing campaign visitors see.
      ========================================================= */
+  /* Install as app (PWA) */
+  var installEvt = null;
+  function isStandalone() { try { return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true; } catch (e) { return false; } }
+  function isIOS() { return /iphone|ipad|ipod/i.test(navigator.userAgent || ''); }
+  function installCard() {
+    if (isStandalone() || CFG.mode === 'demo') return '';
+    if (installEvt) return '<div class="card install"><div><strong>Uygulama gibi kullan</strong><p class="small muted" style="margin:.2rem 0 0">Ana ekrana ekle; tek dokunuşla aç, internetsiz de çalış.</p></div><button type="button" class="btn btn-primary btn-sm" data-act="install">Ana ekrana ekle</button></div>';
+    if (isIOS()) return '<div class="card install"><div><strong>Uygulama gibi kullan</strong><p class="small muted" style="margin:.2rem 0 0">Safari\'de alttaki <b>Paylaş</b> düğmesine dokun, sonra <b>Ana Ekrana Ekle</b>\'yi seç.</p></div></div>';
+    return '';
+  }
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); installEvt = e; if (typeof render === 'function') render(); });
+  window.addEventListener('appinstalled', function () { installEvt = null; track('app_install', {}); render(); });
+
   var QUICK_N = 5;
   function assembleQuick(firstId) {
     var pool = GENERAL.filter(function (q) { return !q.img && q.exp && q.id !== firstId; });
@@ -1353,7 +1375,7 @@ select, input[type="email"], input[type="text"] {
       '<div class="card"><h3>Sırada ne var?</h3><p class="muted small" style="margin-top:.35rem">30 soruluk ücretsiz denemeyle seviyeni ölç. Süre yok, sonunda yanlışlarının açıklamasını görürsün.</p>' +
       '<div class="cta" style="margin-top:.75rem"><button type="button" class="btn btn-primary" data-act="trial-start">Ücretsiz 30 soruluk denemeye geç</button>' +
       '<a class="btn" href="#calis" data-act="onboard">Konu konu çalış</a>' +
-      '<button type="button" class="btn btn-ghost btn-sm" data-act="quick-start">5 yeni soruyla tekrar dene</button></div></div>' +
+      '<button type="button" class="btn btn-ghost btn-sm" data-act="quick-start">5 yeni soruyla tekrar dene</button></div></div>' + installCard() +
       (isUnlocked() ? '' : '<div class="card"><h3>Tam paket</h3><p class="muted small" style="margin-top:.35rem">460 sorunun hepsi Türkçe çeviri ve açıklamalı, zamanlı 33 soruluk deneme, yanlış tekrarı. 14 gün koşulsuz iade.</p><div class="price">' + priceBlock(true) + '<button type="button" class="btn" data-act="buy" data-where="quick-result">' + buyBtnLabel() + '</button></div></div>');
   }
 
@@ -1365,7 +1387,7 @@ select, input[type="email"], input[type="text"] {
     Object.keys(state.progress).forEach(function (id) { if (!BY_ID[id]) return; var p = state.progress[id]; seen++; if (p.last === 'ok') ok++; else if (p.last === 'bad') bad++; });
     var streak = calcStreak(state.days);
     var html = '<div class="section-title"><h2>Durum</h2><span class="count num">' + (streak ? streak + ' gün üst üste' : 'bugün başla') + '</span></div>' +
-      '<div class="stats"><div class="stat"><b>' + seen + '</b><span>görülen soru</span></div><div class="stat is-ok"><b>' + ok + '</b><span>son cevabı doğru</span></div><div class="stat is-bad"><b>' + bad + '</b><span>son cevabı yanlış</span></div></div>';
+      '<div class="stats"><div class="stat"><b>' + seen + '</b><span>görülen soru</span></div><div class="stat is-ok"><b>' + ok + '</b><span>son cevabı doğru</span></div><div class="stat is-bad"><b>' + bad + '</b><span>son cevabı yanlış</span></div></div>' + installCard();
     html += '<div class="card"><div class="premium-row"><div><strong>Paket</strong><span class="status-pill' + (isUnlocked() ? ' is-on' : '') + '" style="margin-left:.5rem">' + (isUnlocked() ? 'Tam paket açık' : 'Ücretsiz sürüm — ' + CFG.freeLimit + ' soru') + '</span></div>' +
       (isUnlocked() ? '' : '<div class="btn-row"><button type="button" class="btn btn-primary btn-sm" data-act="buy" data-where="progress">' + buyBtnLabel() + '</button>' + (CFG.mode === 'live' ? '<button type="button" class="btn btn-sm" data-act="restore">Satın aldım, geri yükle</button>' : '') + '</div>') +
       '</div></div>';
@@ -1647,6 +1669,11 @@ select, input[type="email"], input[type="text"] {
     'sheet-bg': function () { if (!(state.sheet && state.sheet.busy)) closeSheet(); },
     'onboard': function () { state.onboarded = true; lsSet('onboarded', true); },
     'quick-start': function () { startQuick(false); },
+    'install': function () {
+      if (!installEvt) return;
+      var ev = installEvt; installEvt = null;
+      try { ev.prompt(); if (ev.userChoice) ev.userChoice.then(function (c) { track('app_install_prompt', { outcome: c && c.outcome || '' }); render(); }); } catch (e) { /* ignore */ }
+    },
     'quick-next': function () {
       var qz = state.quick; if (!qz) return;
       stopSpeech();
@@ -1757,7 +1784,13 @@ select, input[type="email"], input[type="text"] {
   /* =========================================================
      Boot
      ========================================================= */
+  function registerSW() {
+    try {
+      if ('serviceWorker' in navigator && /^https:$/.test(location.protocol) && CFG.mode !== 'demo') navigator.serviceWorker.register('/sw.js').catch(function () {});
+    } catch (e) { /* ignore */ }
+  }
   function boot() {
+    registerSW();
     // Campaign links (?k=fbB, ?k=tt ...) promise "free 30-question trial": land first-time visitors
     // straight on the first trial question instead of the landing page.
     var campaign = cleanSource(PARAMS.k || PARAMS.utm_source);
