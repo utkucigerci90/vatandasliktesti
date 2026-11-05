@@ -51,7 +51,7 @@ __export(event_exports, {
   onRequestGet: () => onRequestGet,
   onRequestPost: () => onRequestPost
 });
-var TYPES = /* @__PURE__ */ new Set(["visit", "trial_start", "trial_done", "buy_click", "signup", "study_open", "exam_done"]);
+var TYPES = /* @__PURE__ */ new Set(["visit", "trial_start", "trial_done", "buy_click", "signup", "study_open", "exam_done", "quick_start", "quick_done"]);
 var SOURCE_RE = /^[A-Za-z0-9_-]{1,32}$/;
 var EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/;
 var MAX_BODY = 2048;

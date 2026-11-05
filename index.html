@@ -15,55 +15,63 @@
 <link rel="canonical" href="https://vatandasliktesti.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400..800;1,400..800&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Public+Sans:ital,wght@0,400..800;1,400..800&display=swap">
 <style>
 /* ---------- Tokens (light) ---------- */
 :root {
-  --bg: #F3F5F4;
+  --bg: #FBF6EF;
   --surface: #FFFFFF;
-  --surface-2: #E9EDEC;
-  --fg: #141A1F;
-  --muted: #5A6570;
-  --line: #CCD4D8;
-  --line-strong: #8E9AA3;
-  --accent: #1D4F91;
+  --surface-2: #F4ECE1;
+  --fg: #1F1A17;
+  --muted: #6B5F55;
+  --line: #EADFD2;
+  --line-strong: #CDBFAE;
+  --accent: #1F5FAD;
   --accent-ink: #FFFFFF;
-  --accent-soft: #E2EBF8;
-  --accent-soft-ink: #163D70;
+  --accent-soft: #E6EFFA;
+  --accent-soft-ink: #1A4A86;
+  --cta: #C2410C;
+  --cta-ink: #FFFFFF;
+  --warm-soft: #FFEBDD;
+  --warm-ink: #7A2E0A;
   --mark: #F2CF3B;
   --mark-ink: #3A2E00;
   --ok: #1B7F4C;
   --ok-soft: #DCF2E4;
   --ok-ink: #0F5A33;
   --bad: #B4231C;
-  --bad-soft: #F9E1DE;
+  --bad-soft: #FBE4E0;
   --bad-ink: #7E1812;
-  --shadow: 0 1px 2px rgba(20, 26, 31, .08), 0 8px 24px rgba(20, 26, 31, .06);
+  --shadow: 0 1px 2px rgba(60, 40, 20, .06), 0 10px 30px rgba(60, 40, 20, .08);
   --on-status: #FFFFFF;
   --knob: #FFFFFF;
   --knob-shadow: rgba(20, 26, 31, .3);
-  --scrim: rgba(10, 14, 18, .55);
-  --hover-tint: rgba(20, 26, 31, .08);
+  --scrim: rgba(25, 18, 12, .55);
+  --hover-tint: rgba(31, 26, 23, .07);
   --font-body: "Public Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-display: "Young Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --r-card: 6px;
-  --r-ctl: 4px;
-  --r-box: 3px;
+  --font-display: "Nunito", "Public Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --r-card: 16px;
+  --r-ctl: 12px;
+  --r-box: 8px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0F1417;
-    --surface: #171E23;
-    --surface-2: #1F272D;
-    --fg: #E8ECEF;
-    --muted: #9AA6B0;
-    --line: #2D373F;
-    --line-strong: #56636D;
-    --accent: #85ADE8;
+    --bg: #17130F;
+    --surface: #211B16;
+    --surface-2: #2A231D;
+    --fg: #F3ECE4;
+    --muted: #B5A797;
+    --line: #3A3129;
+    --line-strong: #5A4D41;
+    --accent: #8DB6EE;
     --accent-ink: #0B1E3A;
-    --accent-soft: #1A2A42;
-    --accent-soft-ink: #BED3F3;
+    --accent-soft: #1C2A3D;
+    --accent-soft-ink: #C3D7F3;
+    --cta: #F08A4B;
+    --cta-ink: #1F1006;
+    --warm-soft: #3A2416;
+    --warm-ink: #FFD3B5;
     --mark: #E0C34A;
     --mark-ink: #2A2100;
     --ok: #5CC489;
@@ -72,27 +80,31 @@
     --bad: #F08A80;
     --bad-soft: #3A1715;
     --bad-ink: #F7C2BC;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
-    --on-status: #0F1417;
-    --knob: #E8ECEF;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+    --on-status: #17130F;
+    --knob: #F3ECE4;
     --knob-shadow: rgba(0, 0, 0, .5);
     --scrim: rgba(0, 0, 0, .65);
-    --hover-tint: rgba(232, 236, 239, .1);
+    --hover-tint: rgba(243, 236, 228, .1);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0F1417;
-  --surface: #171E23;
-  --surface-2: #1F272D;
-  --fg: #E8ECEF;
-  --muted: #9AA6B0;
-  --line: #2D373F;
-  --line-strong: #56636D;
-  --accent: #85ADE8;
+  --bg: #17130F;
+  --surface: #211B16;
+  --surface-2: #2A231D;
+  --fg: #F3ECE4;
+  --muted: #B5A797;
+  --line: #3A3129;
+  --line-strong: #5A4D41;
+  --accent: #8DB6EE;
   --accent-ink: #0B1E3A;
-  --accent-soft: #1A2A42;
-  --accent-soft-ink: #BED3F3;
+  --accent-soft: #1C2A3D;
+  --accent-soft-ink: #C3D7F3;
+  --cta: #F08A4B;
+  --cta-ink: #1F1006;
+  --warm-soft: #3A2416;
+  --warm-ink: #FFD3B5;
   --mark: #E0C34A;
   --mark-ink: #2A2100;
   --ok: #5CC489;
@@ -101,12 +113,12 @@
   --bad: #F08A80;
   --bad-soft: #3A1715;
   --bad-ink: #F7C2BC;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
-  --on-status: #0F1417;
-  --knob: #E8ECEF;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+  --on-status: #17130F;
+  --knob: #F3ECE4;
   --knob-shadow: rgba(0, 0, 0, .5);
   --scrim: rgba(0, 0, 0, .65);
-  --hover-tint: rgba(232, 236, 239, .1);
+  --hover-tint: rgba(243, 236, 228, .1);
   color-scheme: dark;
 }
 
@@ -132,7 +144,7 @@ body::before {
   background: var(--surface);
   z-index: 40;
 }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; margin: 0; letter-spacing: -0.005em; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
 h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
 h2 { font-size: 1.4rem; }
 h3 { font-size: 1.15rem; }
@@ -440,6 +452,54 @@ select, input[type="email"], input[type="text"] {
 /* ---------- Toast ---------- */
 .toast { position: fixed; left: 50%; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: .65rem 1rem; border-radius: var(--r-ctl); font-size: .92rem; z-index: 60; box-shadow: var(--shadow); max-width: calc(100vw - 32px); }
 
+/* ---------- Warm skin (overrides) ---------- */
+.hdr { background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: saturate(1.4) blur(8px); border-bottom-color: var(--line); }
+.brand-mark { border: 0; background: var(--cta); color: var(--cta-ink); border-radius: 8px; }
+.brand-name { font-weight: 800; }
+.tab[aria-current="page"] { border-bottom-color: var(--cta); }
+.btn { border-radius: var(--r-ctl); border-color: var(--line-strong); }
+.btn-primary { background: var(--cta); border-color: var(--cta); color: var(--cta-ink); box-shadow: 0 2px 0 rgba(0,0,0,.08); }
+.btn-primary:hover { background: var(--cta); filter: brightness(1.06); }
+.card, .qcard, .lock, .wrong-item, .qlist, .stats { border-color: var(--line); box-shadow: var(--shadow); }
+.qcard { border-radius: var(--r-card); padding: 1.1rem; }
+.qcard-head .field { font-family: var(--font-body); font-weight: 700; font-size: .78rem; letter-spacing: .03em; text-transform: uppercase; color: var(--warm-ink); background: var(--warm-soft); padding: .2rem .55rem; border-radius: 999px; }
+.qtext { font-weight: 650; }
+.tr { border-left-color: var(--cta); }
+.opt { border-color: var(--line-strong); border-radius: var(--r-ctl); padding: .75rem .9rem; transition: background .12s, border-color .12s, transform .08s; }
+.opt:active:not([disabled]) { transform: scale(.99); }
+.opt .box { width: 30px; height: 30px; border-radius: 999px; border: 2px solid var(--line-strong); font-weight: 800; font-size: .9rem; color: var(--muted); margin-top: -.1rem; }
+.opt .letter { display: none; }
+.opt.is-picked { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.opt.is-picked .box { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.exp { border-radius: var(--r-ctl); border-left-width: 0; padding: 1rem 1.1rem; }
+.exp .verdict { font-family: var(--font-display); font-weight: 800; }
+.hero { background: linear-gradient(160deg, var(--warm-soft), transparent 75%); border-radius: 22px; padding: 1.4rem 1.1rem 1.2rem; margin-left: -.25rem; margin-right: -.25rem; }
+.hero h1 { font-size: clamp(1.85rem, 6.4vw, 2.6rem); }
+.hero .lead { color: var(--fg); opacity: .82; }
+.hello { display: inline-flex; align-items: center; gap: .4rem; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .3rem .75rem; font-size: .86rem; font-weight: 600; margin-bottom: .85rem; box-shadow: var(--shadow); }
+.facts { border: 0; background: transparent; gap: .5rem; overflow: visible; }
+.fact { background: var(--surface); border: 1px solid var(--line) !important; border-radius: 14px; box-shadow: var(--shadow); }
+.fact b { font-family: var(--font-display); font-weight: 800; color: var(--cta); }
+.price-amount, .score-big, .stat b, .timer { font-weight: 800; }
+.inside li::before { border-radius: 999px; border-color: var(--cta); background: var(--warm-soft); }
+.note-official { opacity: .9; }
+/* Quick quiz */
+.welcome { background: var(--warm-soft); color: var(--warm-ink); border-radius: var(--r-card); padding: 1rem 1.1rem; }
+.welcome h2 { font-size: 1.3rem; margin-bottom: .35rem; color: var(--fg); }
+.welcome p { margin: 0; }
+.dots { display: flex; gap: .4rem; align-items: center; }
+.dots i { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-2); }
+.dots i.is-ok { background: var(--ok); }
+.dots i.is-bad { background: var(--bad); }
+.dots i.is-cur { background: var(--cta); }
+.dots-txt { display: flex; justify-content: space-between; font-size: .85rem; color: var(--muted); margin-bottom: .4rem; }
+.hint-pick { text-align: center; color: var(--muted); font-size: .9rem; margin-top: .75rem; }
+.quick-score { text-align: center; padding: 1.4rem 1rem; }
+.quick-score .big { font-family: var(--font-display); font-weight: 800; font-size: 3.4rem; line-height: 1; color: var(--cta); }
+.quick-score .big small { font-size: 1.5rem; color: var(--muted); }
+.next-cta { position: sticky; bottom: calc(.75rem + env(safe-area-inset-bottom, 0px)); z-index: 5; margin-top: 1rem; }
+.next-cta .btn { width: 100%; min-height: 54px; font-size: 1.05rem; }
+
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
@@ -488,7 +548,7 @@ select, input[type="email"], input[type="text"] {
   var CAT_ORDER = ['politik', 'geschichte', 'gesellschaft', 'land'];
   var EXAM_TOTAL = 33, EXAM_GENERAL = 30, EXAM_STATE = 3, EXAM_PASS = 17, EXAM_MS = 60 * 60 * 1000;
   var TRIAL_N = 30, TRIAL_FREE_EXPL = 3;
-  var VIEWS = ['baslangic', 'calis', 'deneme', 'yanlislarim', 'durum', 'kosullar', 'iade', 'gizlilik'];
+  var VIEWS = ['baslangic', 'hizli', 'calis', 'deneme', 'yanlislarim', 'durum', 'kosullar', 'iade', 'gizlilik'];
   var LETTERS = ['A', 'B', 'C', 'D'];
 
   /* =========================================================
@@ -725,6 +785,7 @@ select, input[type="email"], input[type="text"] {
     onboarded: lsGet('onboarded', false),
     signedUp: lsGet('signedup', false),
     exam: lsGet('exam', null),            // running exam {kind, ids, answers, marked, idx, start, done, result}
+    quick: lsGet('quick', null),          // 5-question instant-feedback quiz {ids, idx, picked, done, auto, counted}
     // transient
     study: { cat: 'all', id: null, picked: null },
     retry: { id: null, picked: null },
@@ -736,6 +797,7 @@ select, input[type="email"], input[type="text"] {
   if (state.exam && (!Array.isArray(state.exam.ids) || !state.exam.ids.every(function (id) { return !!BY_ID[id]; }))) {
     state.exam = null; lsDel('exam'); // data changed under a saved exam
   }
+  if (state.quick && (!Array.isArray(state.quick.ids) || !state.quick.ids.every(function (id) { return !!BY_ID[id]; }))) { state.quick = null; lsDel('quick'); }
   // Owner preview: ?demo=1 unlocks this device (documented in config.README)
   if (PARAMS.demo === '1' && !state.unlock) { state.unlock = 'demo.' + uid(); lsSet('unlock', state.unlock); }
 
@@ -831,8 +893,9 @@ select, input[type="email"], input[type="text"] {
     var demoQ = GENERAL[0];
     return '' +
       '<section class="hero">' +
-        '<h1>Alman vatandaşlık sınavını Türkçe anlatımla geç</h1>' +
-        '<p class="lead">Einbürgerungstest soruları Almanca, tıpkı sınavdaki gibi. Her sorunun altında Türkçe çevirisi ve neden o cevabın doğru olduğunu anlatan kısa bir açıklama var.</p>' +
+        '<span class="hello">🇩🇪 Almanya\'daki Türkler için, Türkçe</span>' +
+        '<h1>Vatandaşlık sınavını anlayarak çalış, rahatça geç</h1>' +
+        '<p class="lead">Sorular sınavdaki gibi Almanca. Her birinin altında Türkçe çevirisi ve doğru cevabın neden doğru olduğunu anlatan kısa bir açıklama var. Ezber değil, anlayarak.</p>' +
         '<div class="facts" aria-label="Sınav bilgileri">' +
           '<div class="fact"><b>33</b><span>soru</span></div>' +
           '<div class="fact"><b>60</b><span>dakika</span></div>' +
@@ -840,8 +903,8 @@ select, input[type="email"], input[type="text"] {
           '<div class="fact"><b>30+3</b><span>genel + eyalet</span></div>' +
         '</div>' +
         '<div class="cta">' +
-          '<button type="button" class="btn btn-primary" data-act="trial-start">Ücretsiz 30 soruluk denemeye başla</button>' +
-          '<a class="btn" href="#calis" data-act="onboard">Konu konu çalış</a>' +
+          '<button type="button" class="btn btn-primary" data-act="quick-start">5 soruyla hemen dene (1 dakika)</button>' +
+          '<button type="button" class="btn" data-act="trial-start">Ücretsiz 30 soruluk deneme</button>' +
         '</div>' +
         '<p class="note-official">Sorular resmi katalogdan (EinbTestV Anlage 1, BAMF). Bu uygulama resmi bir kurum değildir.</p>' +
       '</section>' +
@@ -955,9 +1018,11 @@ select, input[type="email"], input[type="text"] {
     var reveal = o.reveal !== false && answered;       // exam mode: reveal=false until the end
     var showTr = (o.showTr !== undefined) ? o.showTr : state.tr;
     var hasOptImgs = q.img && q.img.kind === 'options' && Array.isArray(q.img.urls) && q.img.urls.length > 0;
-    var fieldLabel = q.scope === 'general' ? ('Soru ' + (q.n || '')) : (esc(STATE_NAME[q.scope] || q.scope) + ' · Soru ' + (q.n || ''));
+    var counted = o.context === 'exam' || o.context === 'quick';
+    var fieldLabel = counted ? esc(q.scope === 'general' ? (CATS[q.cat] || 'Genel soru') : (STATE_NAME[q.scope] || q.scope))
+      : (q.scope === 'general' ? ('Soru ' + (q.n || '')) : (esc(STATE_NAME[q.scope] || q.scope) + ' · Soru ' + (q.n || '')));
     var head = '<div class="qcard-head"><span class="field">' + fieldLabel + '</span>' +
-      (o.context === 'exam' ? '<span class="num">' + (o.idx + 1) + ' / ' + o.total + '</span>' : '<span>' + esc(CATS[q.cat] || '') + '</span>') +
+      (counted ? '<span class="num">' + (o.idx + 1) + ' / ' + o.total + '</span>' : '<span>' + esc(CATS[q.cat] || '') + '</span>') +
       '</div>';
     var html = '<div class="qcard" data-qid="' + esc(q.id) + '">' + head +
       '<div class="qline"><div><p class="qtext" lang="de">' + esc(q.q) + '</p>' +
@@ -968,7 +1033,7 @@ select, input[type="email"], input[type="text"] {
       var cls = 'opt';
       if (reveal) { if (i === q.c) cls += ' is-correct'; else if (i === picked) cls += ' is-wrong'; }
       else if (answered && i === picked) cls += ' is-picked';
-      var boxInner = reveal && i === q.c ? ICON.check : (reveal && i === picked ? ICON.cross : (answered && i === picked ? ICON.check : ''));
+      var boxInner = reveal && i === q.c ? ICON.check : (reveal && i === picked ? ICON.cross : (answered && i === picked ? ICON.check : LETTERS[i]));
       html += '<li><button type="button" class="' + cls + '" data-act="pick" data-i="' + i + '"' + (reveal ? ' disabled' : '') + ' aria-pressed="' + (answered && i === picked ? 'true' : 'false') + '">' +
         '<span class="box" aria-hidden="true">' + boxInner + '</span>' +
         '<span class="body"><span class="letter">' + LETTERS[i] + '</span><span lang="de">' + esc(q.a[i]) + '</span>' +
@@ -1228,6 +1293,67 @@ select, input[type="email"], input[type="text"] {
   }
 
   /* =========================================================
+     Quick quiz: 5 questions, answer + Turkish explanation shown
+     immediately. The first thing campaign visitors see.
+     ========================================================= */
+  var QUICK_N = 5;
+  function assembleQuick(firstId) {
+    var pool = GENERAL.filter(function (q) { return !q.img && q.exp && q.id !== firstId; });
+    var ids = sample(pool, QUICK_N).map(function (q) { return q.id; });
+    if (firstId && BY_ID[firstId]) ids = [firstId].concat(ids.slice(0, QUICK_N - 1));
+    return ids;
+  }
+  function startQuick(auto) {
+    stopSpeech();
+    var first = PARAMS.q && BY_ID[PARAMS.q] ? PARAMS.q : null;
+    var ids = assembleQuick(first);
+    if (!ids.length) { go('baslangic'); return; }
+    state.quick = { ids: ids, idx: 0, picked: {}, done: false, auto: !!auto, counted: false };
+    lsSet('quick', state.quick);
+    state.onboarded = true; lsSet('onboarded', true);
+    go('hizli');
+  }
+  function viewQuick() {
+    var qz = state.quick;
+    if (!qz) return '<div class="card"><p>Hızlı test hazırlanıyor…</p><button type="button" class="btn btn-primary" data-act="quick-start">Başla</button></div>';
+    if (qz.done) return quickResult(qz);
+    var q = BY_ID[qz.ids[qz.idx]];
+    var picked = qz.picked[q.id];
+    var answered = picked !== undefined;
+    var html = '';
+    if (qz.idx === 0 && !answered) {
+      html += '<div class="welcome"><h2>Hoş geldin! 5 soruyla dene</h2>' +
+        '<p>Sınavdaki gerçek sorular, altında Türkçe çevirisi. Bir şık seç; doğru cevabı ve <strong>neden doğru olduğunu Türkçe</strong> hemen göreceksin. Ücretsiz, kayıt yok.</p></div>';
+    }
+    html += '<div><div class="dots-txt"><span>Hızlı test</span><span class="num">' + (qz.idx + 1) + ' / ' + qz.ids.length + '</span></div><div class="dots" aria-hidden="true">' +
+      qz.ids.map(function (id, i) {
+        var p = qz.picked[id];
+        var cls = p === undefined ? (i === qz.idx ? 'is-cur' : '') : (p === BY_ID[id].c ? 'is-ok' : 'is-bad');
+        return '<i class="' + cls + '"></i>';
+      }).join('') + '</div></div>';
+    html += questionCard(q, answered ? picked : null, { context: 'quick', idx: qz.idx, total: qz.ids.length, showNav: false, showTr: true });
+    if (answered) {
+      var last = qz.idx >= qz.ids.length - 1;
+      html += '<div class="next-cta"><button type="button" class="btn btn-primary" data-act="quick-next">' + (last ? 'Sonucumu gör' : 'Sonraki soru →') + '</button></div>';
+    } else {
+      html += '<p class="hint-pick">Cevabını bilmiyorsan da bir şık seç; açıklamayı okuyarak öğrenirsin.</p>';
+    }
+    return html;
+  }
+  function quickScore(qz) { return qz.ids.reduce(function (n, id) { return n + (qz.picked[id] === BY_ID[id].c ? 1 : 0); }, 0); }
+  function quickResult(qz) {
+    var sc = quickScore(qz), n = qz.ids.length;
+    var msg = sc === n ? 'Harika, hepsi doğru! Gerçek sınava yakınsın.' : (sc >= 3 ? 'Güzel başlangıç. Biraz çalışmayla 17 doğruyu rahat geçersin.' : 'Endişelenme, çoğu kişi böyle başlıyor. Açıklamalarla çalışınca hızla artıyor.');
+    return '<div class="card quick-score"><div class="big num">' + sc + '<small>/' + n + '</small></div><p style="margin:.6rem 0 0;font-weight:600">' + esc(msg) + '</p>' +
+      '<p class="small muted" style="margin:.35rem 0 0">Gerçek sınavda 33 sorudan 17 doğru yeterli.</p></div>' +
+      '<div class="card"><h3>Sırada ne var?</h3><p class="muted small" style="margin-top:.35rem">30 soruluk ücretsiz denemeyle seviyeni ölç. Süre yok, sonunda yanlışlarının açıklamasını görürsün.</p>' +
+      '<div class="cta" style="margin-top:.75rem"><button type="button" class="btn btn-primary" data-act="trial-start">Ücretsiz 30 soruluk denemeye geç</button>' +
+      '<a class="btn" href="#calis" data-act="onboard">Konu konu çalış</a>' +
+      '<button type="button" class="btn btn-ghost btn-sm" data-act="quick-start">5 yeni soruyla tekrar dene</button></div></div>' +
+      (isUnlocked() ? '' : '<div class="card"><h3>Tam paket</h3><p class="muted small" style="margin-top:.35rem">460 sorunun hepsi Türkçe çeviri ve açıklamalı, zamanlı 33 soruluk deneme, yanlış tekrarı. 14 gün koşulsuz iade.</p><div class="price">' + priceBlock(true) + '<button type="button" class="btn" data-act="buy" data-where="quick-result">' + buyBtnLabel() + '</button></div></div>');
+  }
+
+  /* =========================================================
      Progress + settings view
      ========================================================= */
   function viewProgress() {
@@ -1401,7 +1527,7 @@ select, input[type="email"], input[type="text"] {
   var tabs = document.getElementById('tabs');
   var chip = document.getElementById('state-chip');
   var mistBadge = document.getElementById('mist-badge');
-  var VIEW_FN = { baslangic: viewLanding, calis: viewStudy, deneme: viewExam, yanlislarim: viewMistakes, durum: viewProgress, kosullar: viewKosullar, iade: viewIade, gizlilik: viewGizlilik };
+  var VIEW_FN = { baslangic: viewLanding, hizli: viewQuick, calis: viewStudy, deneme: viewExam, yanlislarim: viewMistakes, durum: viewProgress, kosullar: viewKosullar, iade: viewIade, gizlilik: viewGizlilik };
 
   function render() {
     if (!app) return;
@@ -1473,6 +1599,15 @@ select, input[type="email"], input[type="text"] {
      Actions (event delegation)
      ========================================================= */
   function pickAnswer(i) {
+    var qz = state.quick;
+    if (state.view === 'hizli' && qz && !qz.done) {
+      var qqid = qz.ids[qz.idx];
+      if (qz.picked[qqid] !== undefined) return;
+      if (!qz.counted) { qz.counted = true; track('quick_start', { auto: qz.auto ? 1 : 0 }); }
+      qz.picked[qqid] = i; recordAnswer(BY_ID[qqid], i); lsSet('quick', qz); render();
+      try { var ee = document.querySelector('.exp'); if (ee && ee.scrollIntoView) ee.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) { /* ignore */ }
+      return;
+    }
     var ex = state.exam;
     if (state.view === 'deneme' && ex && !ex.done) {
       var qid = ex.ids[ex.idx];
@@ -1507,6 +1642,14 @@ select, input[type="email"], input[type="text"] {
     'sheet-close': function () { closeSheet(); },
     'sheet-bg': function () { if (!(state.sheet && state.sheet.busy)) closeSheet(); },
     'onboard': function () { state.onboarded = true; lsSet('onboarded', true); },
+    'quick-start': function () { startQuick(false); },
+    'quick-next': function () {
+      var qz = state.quick; if (!qz) return;
+      stopSpeech();
+      if (qz.idx < qz.ids.length - 1) { qz.idx++; }
+      else { qz.done = true; track('quick_done', { score: quickScore(qz) }); }
+      lsSet('quick', qz); render(); try { window.scrollTo(0, 0); } catch (e) { /* ignore */ }
+    },
     'trial-start': function () { if (state.exam && !state.exam.done) { go('deneme'); return; } startExam('trial'); },
     'exam-start': function () { if (!state.stateCode) { openSheet({ kind: 'state' }); return; } startExam('exam'); },
     'exam-prev': function () { var ex = state.exam; if (ex && ex.idx > 0) { ex.idx--; saveExam(); stopSpeech(); render(); scrollTopOf('.exam-top'); } },
@@ -1615,8 +1758,8 @@ select, input[type="email"], input[type="text"] {
     // straight on the first trial question instead of the landing page.
     var campaign = cleanSource(PARAMS.k || PARAMS.utm_source);
     if (campaign && !window.location.hash && !state.onboarded && !(state.exam && !state.exam.done)) {
-      track('visit', { vid: VID, path: 'deneme', direct_trial: 1 });
-      startExam('trial', true);
+      track('visit', { vid: VID, path: 'hizli', quick: 1 });
+      startQuick(true);
       return;
     }
     state.view = routeFromHash();
